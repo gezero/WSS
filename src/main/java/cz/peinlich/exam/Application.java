@@ -21,9 +21,10 @@ import org.springframework.context.annotation.Configuration;
  * will contain already results.
  * <p/>
  * If you want to run some other file as an input, it has to be specified in the sample-data.csv file. It is also
- * possible to specify custom list of files using the input-file-url property. To check how to set this property, see
- * Externalized configuration on
- * <a href=http://docs.spring.io/spring-boot/docs/1.0.2.RELEASE/reference/htmlsingle/#boot-features-external-config>Spring Boot reference</a>}
+ * possible to specify custom list of input files using the input-file-url property. To check how to set this property,
+ * see - Externalized configuration in the
+ * <a href=http://docs.spring.io/spring-boot/docs/1.0.2.RELEASE/reference/htmlsingle/#boot-features-external-config>
+ *     Spring Boot reference</a>. For instance check the Accessing command line properties chapter there.
  * <p/>
  * User: George
  * Date: 20.5.2014
