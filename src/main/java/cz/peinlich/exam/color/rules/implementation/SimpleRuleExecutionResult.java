@@ -41,7 +41,7 @@ public class SimpleRuleExecutionResult implements RuleExecutionResult{
             append(cell.getColor()).append(",").
             append(message!=null?message:"OK");
         if (cell.getComment()!=null){
-            buffer.append(",").append(cell.getComment());
+            buffer.append(cell.getComment());
         }
         buffer.append("\n");
     }
