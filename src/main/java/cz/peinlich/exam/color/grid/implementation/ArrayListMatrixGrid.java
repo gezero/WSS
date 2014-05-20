@@ -1,13 +1,18 @@
 package cz.peinlich.exam.color.grid.implementation;
 
 import cz.peinlich.exam.color.grid.Cell;
+import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
+
+import static com.google.common.base.Preconditions.checkArgument;
 
 
 /**
@@ -17,12 +22,12 @@ import java.util.List;
  */
 public class ArrayListMatrixGrid implements Grid {
     private static final Logger logger = LoggerFactory.getLogger(ArrayListMatrixGrid.class);
-    final List<List<Cell>> matrix;
+    final List<List<Cell>> matrix  = new ArrayList<>();
+    final List<Cell> cells = new LinkedList<>();
     int width;
     int height;
 
     public ArrayListMatrixGrid(int width, int height) {
-        matrix = new ArrayList<>(width);
         this.width = 0;
         this.height = 0;
         extendMatrix(width, height);
@@ -30,16 +35,24 @@ public class ArrayListMatrixGrid implements Grid {
 
     @Override
     public Cell getCell(Point coordinates) {
-        return matrix.get(coordinates.getX()).get(coordinates.getY());
+        try {
+            return matrix.get(coordinates.getX()).get(coordinates.getY());
+        } catch (IndexOutOfBoundsException e) {
+            extendMatrix(coordinates.getX() + 1, coordinates.getY() + 1);
+            return matrix.get(coordinates.getX()).get(coordinates.getY());
+        }
     }
 
     public void setCell(Cell cell) {
+        checkArgument(!cell.getColor().equals(Color.EMPTY));
+        checkArgument(getCell(cell.getCoordinates()).getColor().equals(Color.EMPTY));
         try {
             matrix.get(cell.getCoordinates().getX()).set(cell.getCoordinates().getY(), cell);
         } catch (IndexOutOfBoundsException e) {
             extendMatrix(cell.getCoordinates().getX() + 1, cell.getCoordinates().getY() + 1);
             matrix.get(cell.getCoordinates().getX()).set(cell.getCoordinates().getY(), cell);
         }
+        cells.add(cell);
     }
 
     private void extendMatrix(int newWidth, int newHeight) {
@@ -66,5 +79,9 @@ public class ArrayListMatrixGrid implements Grid {
                 column.add(new EmptyCell(new Point(i, j)));
             }
         }
+    }
+
+    public Collection<Cell> getNonEmptyCells() {
+        return cells;
     }
 }

@@ -35,11 +35,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!-- test dependencies -->
+
+        <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
         <dependency>
             <groupId>dbunit</groupId>
             <artifactId>dbunit</artifactId>
@@ -54,8 +64,9 @@
 		<java.version>1.7</java.version>
 
         <!--Non Boot dependencies -->
+        <guava.version>17.0</guava.version>
         <dbunit.version>2.2</dbunit.version>
-	</properties>
+    </properties>
 
 	<build>
 		<plugins>

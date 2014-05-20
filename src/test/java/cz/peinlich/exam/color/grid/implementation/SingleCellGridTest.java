@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -28,5 +29,10 @@ public class SingleCellGridTest {
 
         Cell cell = grid.getCell(new Point(7, 22));
         assertThat(cell.getColor(), is(Color.GREEN));
+
+        Collection<Cell> nonEmptyCells = grid.getNonEmptyCells();
+        assertThat(nonEmptyCells.size(),is(1));
+        Cell storedCell = nonEmptyCells.iterator().next();
+        assertThat(storedCell,is(cell));
     }
 }
