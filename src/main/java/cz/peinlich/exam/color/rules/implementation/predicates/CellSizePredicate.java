@@ -4,6 +4,8 @@ import com.google.common.base.Predicate;
 import cz.peinlich.exam.color.structures.Structure;
 
 /**
+ * calls integer predicate on the size of the cell list of a structure
+ * <p/>
  * User: George
  * Date: 20.5.2014
  * Time: 13:33

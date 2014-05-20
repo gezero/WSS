@@ -22,7 +22,14 @@ public abstract class RuleAboutStructure extends AbstractRule {
         this.filterPredicate = filterPredicate;
         this.structurePredicate = structurePredicate;
     }
-
+    /**
+     * Filters structures by the source Predicate.
+     * For each remaining structure
+     *      Check the structurePredicate.
+     *      If the predicate fails, create message for all cells in the structure
+     *
+     * @return list of messages for each cell that was affected by requirements
+     */
     @Override
     public Map<Cell, String> executeRule(Grid grid) {
         Map<Cell, String> result = new HashMap<>();

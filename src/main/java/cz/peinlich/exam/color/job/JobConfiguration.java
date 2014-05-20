@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * This configuration creates the job that will go throw all input files and handle them.
+ *
  * User: George
  * Date: 20.5.2014
  * Time: 17:05
@@ -41,6 +43,12 @@ public class JobConfiguration {
     @Autowired
     ArrayListMatrixGridFactory factory;
 
+    /**
+     * Item Reader checks the sample-data.csv and reads each line. Lines contain path to file that should be
+     * handled. Each file will be parsed and Grid will be created out of it. This grid will be later passed to
+     * the processor.
+     *
+     */
     @Bean
     public ItemReader<Grid> itemReader() {
         FlatFileItemReader<Grid> reader = new FlatFileItemReader<Grid>();
@@ -55,6 +63,12 @@ public class JobConfiguration {
         return reader;
     }
 
+    /**
+     * RuleEngine executes each rule against the grid and returns result that compiles all the individual
+     * results of particular rules. The Result is then passed to ItemWriter.
+     *
+     */
+
     @Bean
     public ItemProcessor<Grid, RuleExecutionResult> itemProcessor() {
         return new ItemProcessor<Grid, RuleExecutionResult>() {
@@ -65,6 +79,9 @@ public class JobConfiguration {
         };
     }
 
+    /**
+     * Writer creates new output file for result and writes the result into the file
+     */
     @Bean
     public ItemWriter<RuleExecutionResult> writer() {
         return new ItemWriter<RuleExecutionResult>() {
@@ -108,15 +125,24 @@ public class JobConfiguration {
                 .build();
     }
 
+    /** Here is the actual specification of the rules */
     @Bean
     public RuleEngine ruleEngine() {
         RuleEngine ruleEngine = new SimpleRuleEngine();
+
+//        1.	Green structure always has an adjacent blue structure.
         ruleEngine.registerRule(new HasAdjacentStructureOfColor(Color.GREEN, Color.BLUE));
+//        2.	Red structure has no more than one another adjacent structure.
         ruleEngine.registerRule(new HasNoMoreThanNAdjacentStructuresRule(Color.RED, 1));
+//        3.	Yellow structure cannot have an adjacent green structure.
         ruleEngine.registerRule(new DoesNotHaveAdjacentStructureOfColor(Color.YELLOW, Color.GREEN));
+//        4.	Red structure cannot consist from more than 5 cells.
         ruleEngine.registerRule(new HasSizeAtMostNRule(Color.RED, 5));
+//        5.	Yellow structure is always linear, i.e. all cells that form the structure are on a single horizontal or vertical line.
         ruleEngine.registerRule(new IsVerticalAndHorizontal(Color.YELLOW));
+//        6.	There are no more than two blue structures in the grid.
         ruleEngine.registerRule(new NoMoreThanNStructuresOfColor(Color.BLUE, 2));
+//        7.	For each color, average number of cells per structure is less than 5.
         for (Color color : Color.values()) {
             if (color != Color.EMPTY) {
                 ruleEngine.registerRule(new AverageAmountOfCellsInStructureLowerThanN(color, 5));

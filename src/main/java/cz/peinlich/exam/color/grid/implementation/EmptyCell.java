@@ -6,6 +6,8 @@ import cz.peinlich.exam.color.grid.Point;
 
 
 /**
+ * Represents empty cell. This class could be removed and exchanged by the other Cell implementation.
+ * <p/>
  * User: George
  * Date: 20.5.2014
  * Time: 8:56

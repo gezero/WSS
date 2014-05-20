@@ -19,6 +19,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Time: 10:39
  */
 public class FloodFillAlgorithm implements FindStructuresAlgorithm {
+
+
+
     @Override
     public Map<Cell, Structure> findStructures(Grid grid) {
         Map<Cell, Structure> map = new HashMap<>();
@@ -45,6 +48,17 @@ public class FloodFillAlgorithm implements FindStructuresAlgorithm {
         return new StructurePojo(structureCells.iterator().next().getColor(), structureCells);
     }
 
+    /**
+     * From Wikipedia (http://en.wikipedia.org/wiki/Flood_fill):
+     *  1. If target-color is equal to replacement-color, return.           (Here represented with combination of new and old grid)
+     *  2. If the color of node is not equal to target-color, return.       (Both grids need to be checked here)
+     *  3. Set the color of node to replacement-color.                      (Into the additional matrix)
+     *  4. Perform Flood-fill (one step to the west of node, target-color, replacement-color).
+     *     Perform Flood-fill (one step to the east of node, target-color, replacement-color).
+     *     Perform Flood-fill (one step to the north of node, target-color, replacement-color).
+     *     Perform Flood-fill (one step to the south of node, target-color, replacement-color).
+     5. Return.
+     */
     private void flood(Point point, Color color, List<Cell> structureCells, ArrayListMatrixGrid fillingGrid, Grid grid) {
         Cell cell = grid.getCell(point);
         if (cell.getColor().equals(color) && fillingGrid.getCell(point).getColor().equals(Color.EMPTY)) {

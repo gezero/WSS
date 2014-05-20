@@ -28,7 +28,12 @@ public class SimpleRuleEngine implements RuleEngine {
     public RuleExecutionResult executeRules(Grid grid) {
         Map<Cell, String> cellStringMap = new HashMap<>();
         for (Rule rule : rules) {
-            cellStringMap.putAll(rule.executeRule(grid));
+            Map<Cell, String> additionalMessages = rule.executeRule(grid);
+            for (Cell cell : additionalMessages.keySet()) {
+                String message = cellStringMap.get(cell);
+                message = message==null?additionalMessages.get(cell):message+","+additionalMessages.get(cell);
+                cellStringMap.put(cell, message);
+            }
         }
 
         SimpleRuleExecutionResult result = new SimpleRuleExecutionResult(grid.getName());

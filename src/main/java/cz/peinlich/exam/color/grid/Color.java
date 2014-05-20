@@ -1,6 +1,8 @@
 package cz.peinlich.exam.color.grid;
 
 /**
+ * Represents color of a cell in a grid
+ * <p/>
  * User: George
  * Date: 20.5.2014
  * Time: 9:10

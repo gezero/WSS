@@ -116,11 +116,14 @@ public class ArrayListMatrixGrid implements Grid {
 
     @Override
     public Collection<Structure> getNeighborStructures(Structure structure) {
+        //get cells that are neighbor cells to any of the structure cells
         Set<Cell> cells = new HashSet<>();
         for (Cell cell : structure.getCells()) {
             cells.addAll(getNeighbors(cell));
         }
+        //remove cells belonging to the structure itself
         cells.removeAll(structure.getCells());
+        //for each neighbor cell check if it is part of a structure
         Set<Structure> structures = new HashSet<>();
         for (Cell cell : cells) {
             Structure structureToAdd = getStructure(cell);

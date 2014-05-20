@@ -25,6 +25,13 @@ public abstract class RuleAboutSetOfStructures extends AbstractRule {
         this.conditionPredicate = conditionPredicate;
     }
 
+    /**
+     * Filters structures by the source Predicate.
+     * check the conditionPredicate on the remaining set of structures
+     * if the condition fails, create message for all cells in the affected structures
+     *
+     * @return list of messages for each cell that was affected by requirements
+     */
     @Override
     public Map<Cell, String> executeRule(Grid grid) {
         Map<Cell, String> result = new HashMap<>();

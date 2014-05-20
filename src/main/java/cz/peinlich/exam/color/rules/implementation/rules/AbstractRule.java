@@ -13,6 +13,7 @@ import java.util.Map;
  * Time: 12:42
  */
 public abstract class AbstractRule implements Rule {
+    /** For each cell from input  create a message for that cell from a custom message*/
     Map<Cell, String> buildWrongResult(Collection<Cell> cells) {
         Map<Cell, String> map = new HashMap<>();
         String message = getMessage();
