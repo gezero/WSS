@@ -19,9 +19,10 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +32,7 @@ import java.util.List;
 
 /**
  * This configuration creates the job that will go throw all input files and handle them.
- *
+ * <p/>
  * User: George
  * Date: 20.5.2014
  * Time: 17:05
@@ -43,16 +44,24 @@ public class JobConfiguration {
     @Autowired
     ArrayListMatrixGridFactory factory;
 
+    @Value("${output-directory}")
+    String outputDirectory;
+
+    @Value("${input-file-url}")
+    String inputFileName;
+
+    @Autowired
+    ApplicationContext context;
+
     /**
      * Item Reader checks the sample-data.csv and reads each line. Lines contain path to file that should be
      * handled. Each file will be parsed and Grid will be created out of it. This grid will be later passed to
      * the processor.
-     *
      */
     @Bean
     public ItemReader<Grid> itemReader() {
         FlatFileItemReader<Grid> reader = new FlatFileItemReader<Grid>();
-        reader.setResource(new ClassPathResource("sample-data.csv"));
+        reader.setResource(context.getResource(inputFileName));
         reader.setLineMapper(new LineMapper<Grid>() {
             @Override
             public Grid mapLine(String line, int i) throws Exception {
@@ -66,7 +75,6 @@ public class JobConfiguration {
     /**
      * RuleEngine executes each rule against the grid and returns result that compiles all the individual
      * results of particular rules. The Result is then passed to ItemWriter.
-     *
      */
 
     @Bean
@@ -94,7 +102,7 @@ public class JobConfiguration {
             }
 
             private void write(RuleExecutionResult ruleExecutionResult) throws IOException {
-                File outputFileName = new File("output/" + ruleExecutionResult.getName());
+                File outputFileName = new File(outputDirectory + ruleExecutionResult.getName());
                 if (!outputFileName.exists()) {
                     outputFileName.getParentFile().mkdirs();
                     outputFileName.createNewFile();
@@ -125,7 +133,9 @@ public class JobConfiguration {
                 .build();
     }
 
-    /** Here is the actual specification of the rules */
+    /**
+     * Here is the actual specification of the rules
+     */
     @Bean
     public RuleEngine ruleEngine() {
         RuleEngine ruleEngine = new SimpleRuleEngine();

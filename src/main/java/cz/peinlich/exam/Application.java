@@ -20,7 +20,10 @@ import org.springframework.context.annotation.Configuration;
  * directory. Currently the tests will also try to execute the job and therefore after mvn package the output directory
  * will contain already results.
  * <p/>
- * If you want to run some other file as an input, it has to be specified in the sample-data.csv file.
+ * If you want to run some other file as an input, it has to be specified in the sample-data.csv file. It is also
+ * possible to specify custom list of files using the input-file-url property. To check how to set this property, see
+ * Externalized configuration on
+ * <a href=http://docs.spring.io/spring-boot/docs/1.0.2.RELEASE/reference/htmlsingle/#boot-features-external-config>Spring Boot reference</a>}
  * <p/>
  * User: George
  * Date: 20.5.2014
