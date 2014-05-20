@@ -4,7 +4,7 @@ import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.Point;
-import cz.peinlich.exam.color.structures.FindStructuresAlgorithmXXX;
+import cz.peinlich.exam.color.structures.FindStructuresAlgorithm;
 import cz.peinlich.exam.color.structures.Structure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -110,7 +110,7 @@ public class ArrayListMatrixGrid implements Grid {
         return structureMap.get(getCell(coordinates));
     }
 
-    public void calculateStructures(FindStructuresAlgorithmXXX algorithm) {
+    public void calculateStructures(FindStructuresAlgorithm algorithm) {
         structureMap = algorithm.findStructures(this);
     }
 
