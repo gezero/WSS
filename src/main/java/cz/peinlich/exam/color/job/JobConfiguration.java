@@ -60,7 +60,7 @@ public class JobConfiguration {
      */
     @Bean
     public ItemReader<Grid> itemReader() {
-        FlatFileItemReader<Grid> reader = new FlatFileItemReader<Grid>();
+        FlatFileItemReader<Grid> reader = new FlatFileItemReader<>();
         reader.setResource(context.getResource(inputFileName));
         reader.setLineMapper(new LineMapper<Grid>() {
             @Override
