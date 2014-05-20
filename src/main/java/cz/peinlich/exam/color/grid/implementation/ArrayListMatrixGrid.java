@@ -53,7 +53,7 @@ public class ArrayListMatrixGrid implements Grid {
     }
 
     private void extendMatrix(int newWidth, int newHeight) {
-        logger.info("Extending matrix. Previous size {},{}", width, height);
+        logger.debug("Extending matrix. Previous size {},{}", width, height);
         extendColumns(newHeight);
         addNewColumns(newWidth, newHeight);
         this.width = newWidth;

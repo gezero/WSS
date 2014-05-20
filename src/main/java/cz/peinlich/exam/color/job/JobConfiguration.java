@@ -7,6 +7,8 @@ import cz.peinlich.exam.color.rules.RuleEngine;
 import cz.peinlich.exam.color.rules.RuleExecutionResult;
 import cz.peinlich.exam.color.rules.implementation.SimpleRuleEngine;
 import cz.peinlich.exam.color.rules.implementation.rules.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -40,6 +42,7 @@ import java.util.List;
 @Configuration
 @EnableBatchProcessing
 public class JobConfiguration {
+    private static final Logger logger = LoggerFactory.getLogger(JobConfiguration.class);
 
     @Autowired
     ArrayListMatrixGridFactory factory;
@@ -65,6 +68,7 @@ public class JobConfiguration {
         reader.setLineMapper(new LineMapper<Grid>() {
             @Override
             public Grid mapLine(String line, int i) throws Exception {
+                logger.info("Reading from file {}",line);
                 FileInputStream inputStream = new FileInputStream(line);
                 return factory.buildGridFromInputStream(inputStream, line);
             }

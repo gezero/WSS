@@ -63,7 +63,7 @@ public class ArrayListMatrixGridFactory {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
         while ((line = reader.readLine()) != null) {
-            logger.info("Reading line: {}", line);
+            logger.debug("Reading line: {}", line);
             if (line.trim().equals("")) {
                 continue;
             }
