@@ -54,7 +54,7 @@ public class JobConfiguration {
     ApplicationContext context;
 
     /**
-     * Item Reader checks the sample-data.csv and reads each line. Lines contain path to file that should be
+     * Item Reader checks the input-list.txt and reads each line. Lines contain path to file that should be
      * handled. Each file will be parsed and Grid will be created out of it. This grid will be later passed to
      * the processor.
      */

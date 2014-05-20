@@ -15,12 +15,12 @@ import org.springframework.context.annotation.Configuration;
  * <p/>
  * To run the build project simply run  <em>java -jar target/wallstreetsystems-exam-0.0.1-SNAPSHOT.jar</em>
  * <p/>
- * The application takes from classpath file sample-data.csv, there is list of files to handle. Each file will be handled
+ * The application takes from classpath file input-list.txt, there is list of files to handle. Each file will be handled
  * separately by the Batch Job. Currently the files from input/* will be handled. The output will be in the output/
  * directory. Currently the tests will also try to execute the job and therefore after mvn package the output directory
  * will contain already results.
  * <p/>
- * If you want to run some other file as an input, it has to be specified in the sample-data.csv file. It is also
+ * If you want to run some other file as an input, it has to be specified in the input-list.txt file. It is also
  * possible to specify custom list of input files using the input-file-url property. To check how to set this property,
  * see - Externalized configuration in the
  * <a href=http://docs.spring.io/spring-boot/docs/1.0.2.RELEASE/reference/htmlsingle/#boot-features-external-config>
