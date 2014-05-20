@@ -7,18 +7,18 @@ import cz.peinlich.exam.color.rules.implementation.predicates.HasSize;
 /**
  * User: George
  * Date: 20.5.2014
- * Time: 12:36
+ * Time: 17:52
  */
-public class HasAdjacentStructureOfColor extends RuleAboutNeighbors {
+public class DoesNotHaveAdjacentStructureOfColor extends RuleAboutNeighbors {
     private final Color neighborColor;
 
-    public HasAdjacentStructureOfColor(Color sourceColor, Color neighborColor) {
-        super(new HasColor(sourceColor), new HasColor(neighborColor), new HasSize(1));
+    public DoesNotHaveAdjacentStructureOfColor(Color sourceColor, Color neighborColor) {
+        super(new HasColor(sourceColor), new HasColor(neighborColor), new HasSize(0));
         this.neighborColor = neighborColor;
     }
 
     @Override
     String getMessage() {
-        return "Does not have neighbor of color " + neighborColor.toString().toLowerCase();
+        return "Should not have neighbor structure of color" + neighborColor.toString().toLowerCase();
     }
 }

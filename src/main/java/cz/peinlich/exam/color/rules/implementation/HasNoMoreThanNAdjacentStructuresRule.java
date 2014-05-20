@@ -10,7 +10,7 @@ import cz.peinlich.exam.color.rules.implementation.predicates.HasSizeAtMost;
  * Date: 20.5.2014
  * Time: 13:08
  */
-public class HasNoMoreThanNAdjacentStructuresRule extends HasAmountOfSpecifiedNeighborStructuresRule {
+public class HasNoMoreThanNAdjacentStructuresRule extends RuleAboutNeighbors {
     private int n;
 
     public HasNoMoreThanNAdjacentStructuresRule(Color sourceColor, int allowedAdjacentStructures) {

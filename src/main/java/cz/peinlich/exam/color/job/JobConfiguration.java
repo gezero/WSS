@@ -5,7 +5,9 @@ import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGridFactory;
 import cz.peinlich.exam.color.rules.RuleEngine;
 import cz.peinlich.exam.color.rules.RuleExecutionResult;
+import cz.peinlich.exam.color.rules.implementation.DoesNotHaveAdjacentStructureOfColor;
 import cz.peinlich.exam.color.rules.implementation.HasAdjacentStructureOfColor;
+import cz.peinlich.exam.color.rules.implementation.HasNoMoreThanNAdjacentStructuresRule;
 import cz.peinlich.exam.color.rules.implementation.SimpleRuleEngine;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -111,6 +113,8 @@ public class JobConfiguration {
     public RuleEngine ruleEngine(){
         RuleEngine ruleEngine = new SimpleRuleEngine();
         ruleEngine.registerRule(new HasAdjacentStructureOfColor(Color.GREEN,Color.BLUE));
+        ruleEngine.registerRule(new HasNoMoreThanNAdjacentStructuresRule(Color.RED,1));
+        ruleEngine.registerRule(new DoesNotHaveAdjacentStructureOfColor(Color.YELLOW,Color.GREEN));
         return ruleEngine;
     }
 

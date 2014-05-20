@@ -15,13 +15,13 @@ import java.util.Map;
  * Date: 20.5.2014
  * Time: 12:22
  */
-public abstract class HasAmountOfSpecifiedNeighborStructuresRule extends AbstractRule {
+public abstract class RuleAboutNeighbors extends AbstractRule {
 
     private Predicate<Structure> sourcePredicate;
     private Predicate<Structure> neighborPredicate;
     private Predicate<Integer> sizeRequirement;
 
-    public HasAmountOfSpecifiedNeighborStructuresRule(Predicate<Structure> sourcePredicate, Predicate<Structure> neighborPredicate, Predicate<Integer> sizeRequirement) {
+    public RuleAboutNeighbors(Predicate<Structure> sourcePredicate, Predicate<Structure> neighborPredicate, Predicate<Integer> sizeRequirement) {
         this.sourcePredicate = sourcePredicate;
         this.neighborPredicate = neighborPredicate;
         this.sizeRequirement = sizeRequirement;
