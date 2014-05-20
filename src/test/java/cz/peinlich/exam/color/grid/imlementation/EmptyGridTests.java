@@ -5,18 +5,20 @@ import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.grid.Point;
 import cz.peinlich.exam.color.grid.Structure;
 import org.junit.Test;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
-public class ArrayListMatrixGridTest {
+public class EmptyGridTests {
+    ArrayListMatrixGridFactory factory = new ArrayListMatrixGridFactory();
 
     @Test
-    public void createEmptyGrid(){
-
-        ArrayListMatrixGridFactory factory = new ArrayListMatrixGridFactory();
+    public void create_empty_grid_of_fixed_size(){
 
         int width = 25;
         int height = 25;
@@ -31,6 +33,15 @@ public class ArrayListMatrixGridTest {
 
         Collection<Structure> structures = grid.getStructures();
         assertThat(structures.size(),is(0));
+    }
+
+    ClassPathResource emptyGridCell = new ClassPathResource("cz/peinlich/exam/color/grid/imlementation/empty_grid.txt");
+
+    @Test
+    public void create_grid_from_external_resource() throws IOException {
+
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(emptyGridCell.getInputStream());
+        assertThat(grid,is(notNullValue()));
 
     }
 
