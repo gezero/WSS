@@ -1,4 +1,4 @@
-package cz.peinlich.exam.color.rules.implementation.rules;
+package cz.peinlich.exam.color.rules.implementation.predicates;
 
 import com.google.common.base.Predicate;
 import cz.peinlich.exam.color.structures.Structure;

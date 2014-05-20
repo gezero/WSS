@@ -1,9 +1,9 @@
-package cz.peinlich.exam.color.rules.implementation.rules;
+package cz.peinlich.exam.color.rules.implementation.predicates;
 
 import com.google.common.base.Predicate;
 import cz.peinlich.exam.color.structures.Structure;
 
-/**
+/** Calls Integer predicate on the amount of Structures in iterable input.
  * User: George
  * Date: 20.5.2014
  * Time: 14:04

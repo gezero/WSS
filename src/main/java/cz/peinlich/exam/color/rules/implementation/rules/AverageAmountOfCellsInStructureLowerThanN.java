@@ -1,6 +1,7 @@
 package cz.peinlich.exam.color.rules.implementation.rules;
 
 import cz.peinlich.exam.color.grid.Color;
+import cz.peinlich.exam.color.rules.implementation.predicates.HasAverageAmountOfCellsBelow;
 import cz.peinlich.exam.color.rules.implementation.predicates.HasColor;
 
 /**
