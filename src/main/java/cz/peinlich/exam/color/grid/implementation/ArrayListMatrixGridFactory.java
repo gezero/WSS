@@ -3,6 +3,7 @@ package cz.peinlich.exam.color.grid.implementation;
 import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.grid.Point;
+import cz.peinlich.exam.color.structures.implementation.FloodFillAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +51,8 @@ public class ArrayListMatrixGridFactory {
             Cell cell = parse(line);
             grid.setCell(cell);
         }
+
+        grid.calculateStructures(new FloodFillAlgorithm());
         return grid;
     }
 }

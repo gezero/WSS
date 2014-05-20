@@ -8,10 +8,10 @@ import java.util.Map;
 /**
  * User: George
  * Date: 20.5.2014
- * Time: 8:44
+ * Time: 12:11
  */
-public interface Rule {
-    Map<Cell, String> executeRule(Grid grid);
+public interface RuleEngine {
+    void registerRule(Rule rule);
 
-
+    Map<Cell, RuleExecutionResult> executeRules(Grid grid);
 }

@@ -22,4 +22,6 @@ public interface Grid {
     Collection<Cell> getNeighbors(Point coordinates);
 
     Collection<Structure> getNeighborStructures(Structure structure);
+
+    Collection<Structure> getAllStructures();
 }

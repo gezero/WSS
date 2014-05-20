@@ -6,7 +6,6 @@ import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.Point;
 import cz.peinlich.exam.color.structures.FindStructuresAlgorithm;
 import cz.peinlich.exam.color.structures.Structure;
-import cz.peinlich.exam.color.structures.implementation.FloodFillAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +23,7 @@ public class ArrayListMatrixGrid implements Grid {
     private static final Logger logger = LoggerFactory.getLogger(ArrayListMatrixGrid.class);
     final List<List<Cell>> matrix = new ArrayList<>();
     final List<Cell> cells = new LinkedList<>();
-    Map<Cell,Structure> structureMap = new HashMap<>();
+    Map<Cell, Structure> structureMap = new HashMap<>();
     int width;
     int height;
 
@@ -105,8 +104,8 @@ public class ArrayListMatrixGrid implements Grid {
         if (coordinates.getY() > 0) {
             neighbors.add(getCell(coordinates.move(0, -1)));
         }
-        neighbors.add(getCell(coordinates.move(1,0)));
-        neighbors.add(getCell(coordinates.move(0,1)));
+        neighbors.add(getCell(coordinates.move(1, 0)));
+        neighbors.add(getCell(coordinates.move(0, 1)));
         return neighbors;
     }
 
@@ -128,7 +127,7 @@ public class ArrayListMatrixGrid implements Grid {
         Set<Structure> structures = new HashSet<>();
         for (Cell cell : cells) {
             Structure structureToAdd = getStructure(cell);
-            if (structureToAdd!=null) {
+            if (structureToAdd != null) {
                 structures.add(structureToAdd);
             }
         }
@@ -141,5 +140,10 @@ public class ArrayListMatrixGrid implements Grid {
 
     private Collection<Cell> getNeighbors(Cell cell) {
         return getNeighbors(cell.getCoordinates());
+    }
+
+    @Override
+    public Collection<Structure> getAllStructures() {
+        return structureMap.values();
     }
 }

@@ -24,35 +24,35 @@ public class FloodFillAlgorithm implements FindStructuresAlgorithm {
         Map<Cell, Structure> map = new HashMap<>();
         List<Cell> nonEmptyCells = new LinkedList<>(grid.getNonEmptyCells());
 
-        while (nonEmptyCells.size()>0){
+        while (nonEmptyCells.size() > 0) {
             Cell start = nonEmptyCells.get(0);
             nonEmptyCells.remove(start);
             ArrayListMatrixGridFactory factory = new ArrayListMatrixGridFactory();
             ArrayListMatrixGrid fillingGrid = factory.buildEmptyMatrixGrid(grid.getWidth(), grid.getHeight());
-            Structure structure = findWholeStructure(start,fillingGrid,grid);
+            Structure structure = findWholeStructure(start, fillingGrid, grid);
             nonEmptyCells.removeAll(structure.getCells());
             for (Cell cell : structure.getCells()) {
-                map.put(cell,structure);
+                map.put(cell, structure);
             }
         }
         return map;
     }
 
-    private Structure findWholeStructure(Cell start,ArrayListMatrixGrid fillingGrid, Grid grid) {
+    private Structure findWholeStructure(Cell start, ArrayListMatrixGrid fillingGrid, Grid grid) {
         checkNotNull(start);
         final List<Cell> structureCells = new LinkedList<>();
-        flood(start.getCoordinates(),start.getColor(),structureCells,fillingGrid,grid);
+        flood(start.getCoordinates(), start.getColor(), structureCells, fillingGrid, grid);
         return new StructurePojo(structureCells.iterator().next().getColor(), structureCells);
     }
 
-    private void flood(Point point, Color color,List<Cell> structureCells, ArrayListMatrixGrid fillingGrid, Grid grid) {
+    private void flood(Point point, Color color, List<Cell> structureCells, ArrayListMatrixGrid fillingGrid, Grid grid) {
         Cell cell = grid.getCell(point);
-        if (cell.getColor().equals(color) && fillingGrid.getCell(point).getColor().equals(Color.EMPTY)){
+        if (cell.getColor().equals(color) && fillingGrid.getCell(point).getColor().equals(Color.EMPTY)) {
             Collection<Cell> neighbors = grid.getNeighbors(point);
             fillingGrid.setCell(cell);
             structureCells.add(cell);
             for (Cell neighbor : neighbors) {
-                flood(neighbor.getCoordinates(),color,structureCells,fillingGrid,grid);
+                flood(neighbor.getCoordinates(), color, structureCells, fillingGrid, grid);
             }
         }
     }

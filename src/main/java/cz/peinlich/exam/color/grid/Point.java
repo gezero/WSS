@@ -23,6 +23,6 @@ public class Point {
     }
 
     public Point move(int x, int y) {
-        return new Point(this.x+x,this.y+y);
+        return new Point(this.x + x, this.y + y);
     }
 }

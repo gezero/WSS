@@ -13,8 +13,8 @@ import java.util.List;
  * Time: 11:24
  */
 public class StructurePojo implements Structure {
-    private List<Cell> cells;
-    private Color color;
+    private final List<Cell> cells;
+    private final Color color;
 
     public StructurePojo(Color color, List<Cell> cells) {
         this.color = color;
