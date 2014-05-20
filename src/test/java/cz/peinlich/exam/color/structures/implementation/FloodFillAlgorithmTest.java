@@ -20,7 +20,7 @@ public class FloodFillAlgorithmTest {
     ArrayListMatrixGridFactory factory = new ArrayListMatrixGridFactory();
 
     @Test
-    public void testFindStructures() throws Exception {
+    public void find_single_structure() throws Exception {
         ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream());
         assertThat(grid, is(notNullValue()));
 
