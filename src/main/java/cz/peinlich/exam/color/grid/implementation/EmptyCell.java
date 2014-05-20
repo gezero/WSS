@@ -29,6 +29,6 @@ public class EmptyCell implements Cell {
 
     @Override
     public String getComment() {
-        return null;
+        return "This is empty cell, you should not see this in output";
     }
 }

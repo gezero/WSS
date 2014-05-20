@@ -5,6 +5,7 @@ import cz.peinlich.exam.color.rules.RuleExecutionResult;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
 
 /**
@@ -27,7 +28,7 @@ public class SimpleRuleExecutionResult implements RuleExecutionResult{
     }
 
     @Override
-    public void writeResult(FileOutputStream outputStream) {
+    public void writeResult(OutputStream outputStream) {
         try {
             outputStream.write(buffer.toString().getBytes(Charset.forName("UTF-8")));
         } catch (IOException e) {

@@ -1,6 +1,6 @@
 package cz.peinlich.exam.color.rules;
 
-import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 /**
  * User: George
@@ -10,5 +10,5 @@ import java.io.FileOutputStream;
 public interface RuleExecutionResult {
     String getName();
 
-    void writeResult(FileOutputStream outputStream);
+    void writeResult(OutputStream outputStream);
 }

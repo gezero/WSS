@@ -48,12 +48,7 @@ public class ArrayListMatrixGrid implements Grid {
     public void setCell(Cell cell) {
         checkArgument(!cell.getColor().equals(Color.EMPTY));
         checkArgument(getCell(cell.getCoordinates()).getColor().equals(Color.EMPTY));
-        try {
-            matrix.get(cell.getCoordinates().getX()).set(cell.getCoordinates().getY(), cell);
-        } catch (IndexOutOfBoundsException e) {
-            extendMatrix(cell.getCoordinates().getX() + 1, cell.getCoordinates().getY() + 1);
-            matrix.get(cell.getCoordinates().getX()).set(cell.getCoordinates().getY(), cell);
-        }
+        matrix.get(cell.getCoordinates().getX()).set(cell.getCoordinates().getY(), cell);
         cells.add(cell);
     }
 
