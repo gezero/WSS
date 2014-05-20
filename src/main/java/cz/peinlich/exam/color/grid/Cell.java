@@ -1,5 +1,6 @@
 package cz.peinlich.exam.color.grid;
 
+
 /**
  * User: George
  * Date: 20.5.2014
@@ -7,4 +8,5 @@ package cz.peinlich.exam.color.grid;
  */
 public interface Cell {
     Color getColor();
+    Point getCoordinates();
 }

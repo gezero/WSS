@@ -37,4 +37,8 @@ public class ArrayListMatrixGrid implements Grid {
     public java.util.Collection<Structure> getStructures() {
         return structures;
     }
+
+    public void setCell(Cell cell) {
+
+    }
 }

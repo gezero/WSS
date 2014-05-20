@@ -6,5 +6,12 @@ package cz.peinlich.exam.color.grid;
  * Time: 9:10
  */
 public enum Color {
-    GREEN, EMPTY
+    GREEN, EMPTY;
+
+    public static Color color(String input){
+        switch (input){
+            case "G":return GREEN;
+            default: return EMPTY;
+        }
+    }
 }

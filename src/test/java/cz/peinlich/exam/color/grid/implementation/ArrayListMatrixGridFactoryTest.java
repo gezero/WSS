@@ -10,7 +10,17 @@ import static org.junit.Assert.*;
 public class ArrayListMatrixGridFactoryTest {
 
     @Test
-    public void testParse() throws Exception {
+    public void test_no_comment() throws Exception {
+        String input = "7,22,G";
+        Cell cell = ArrayListMatrixGridFactory.parse(input);
+        assertThat(cell.getCoordinates().getX(),is(7));
+        assertThat(cell.getCoordinates().getY(),is(22));
+        assertThat(cell.getColor(),is(Color.GREEN));
+    }
+
+
+    @Test
+    public void test_whole_string() throws Exception {
         String input = "7,22,G, Green structure #1";
         Cell cell = ArrayListMatrixGridFactory.parse(input);
         assertThat(cell.getCoordinates().getX(),is(7));
