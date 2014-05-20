@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 public class AverageAmountOfCellsInStructureLowerThanNTest {
 
     ClassPathResource singleCellGridInput = new ClassPathResource("cz/peinlich/exam/color/grid/implementation/specification_grid.txt");
+    ClassPathResource yellowToBigGrid = new ClassPathResource("cz/peinlich/exam/color/grid/implementation/yellow_to_big_grid.txt");
     ArrayListMatrixGridFactory factory = new ArrayListMatrixGridFactory();
 
     @Test
@@ -42,6 +43,17 @@ public class AverageAmountOfCellsInStructureLowerThanNTest {
         rule = new AverageAmountOfCellsInStructureLowerThanN(Color.RED, 3);
         cellStringMap = rule.executeRule(grid);
         assertThat(cellStringMap.size(), is(0));
+    }
+
+  @Test
+    public void test_yellow_to_big_grid() throws IOException {
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(yellowToBigGrid.getInputStream(), null);
+        assertThat(grid, is(notNullValue()));
+
+        AverageAmountOfCellsInStructureLowerThanN rule = new AverageAmountOfCellsInStructureLowerThanN(Color.YELLOW, 5);
+        Map<Cell, String> cellStringMap = rule.executeRule(grid);
+        assertThat(cellStringMap.size(), is(6));
+
     }
 
 

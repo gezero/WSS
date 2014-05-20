@@ -18,6 +18,6 @@ public class AverageAmountOfCellsInStructureLowerThanN extends RuleAboutSetOfStr
 
     @Override
     String getMessage() {
-        return "The average amount of cells of color " + color.toString().toLowerCase() + " is to high.";
+        return "The average amount of cells of color " + color.toString().toLowerCase() + " is to high";
     }
 }

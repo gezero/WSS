@@ -3,6 +3,9 @@ package cz.peinlich.exam.color.rules.implementation.rules;
 import com.google.common.base.Predicate;
 import cz.peinlich.exam.color.structures.Structure;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * User: George
  * Date: 20.5.2014
@@ -17,12 +20,15 @@ public class HasAverageAmountOfCellsBelow implements Predicate<Iterable<Structur
 
     @Override
     public boolean apply(Iterable<Structure> input) {
-        int size = 0;
         int cells = 0;
+        Set<Structure> set = new HashSet<>();
         for (Structure structure : input) {
-            ++size;
+            set.add(structure);
             cells += structure.getCells().size();
         }
-        return (double) cells / (double) size < average;
+        if (set.size() ==0){
+            return true;
+        }
+        return (double) cells / (double) set.size() < average;
     }
 }
