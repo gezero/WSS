@@ -33,12 +33,12 @@ public abstract class HasAmountOfSpecifiedNeighborStructuresRule extends Abstrac
         Iterable<Structure> filter = Iterables.filter(grid.getAllStructures(), sourcePredicate);
         for (Structure satisfyingStructure : filter) {
             Iterable<Structure> rest = Iterables.filter(grid.getNeighborStructures(satisfyingStructure),
-                    Predicates.not(neighborPredicate));
+                    neighborPredicate);
             int size = 0;
             for (Structure structure : rest) {
                 size++;
             }
-            if (sizeRequirement.apply(size)) {
+            if (!sizeRequirement.apply(size)) {
                 result.putAll(buildWrongResult(satisfyingStructure.getCells()));
             }
         }
