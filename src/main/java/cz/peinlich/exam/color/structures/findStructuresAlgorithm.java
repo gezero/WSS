@@ -1,8 +1,9 @@
 package cz.peinlich.exam.color.structures;
 
+import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Grid;
 
-import java.util.Collection;
+import java.util.Map;
 
 /**
  * User: George
@@ -10,5 +11,5 @@ import java.util.Collection;
  * Time: 10:38
  */
 public interface FindStructuresAlgorithm {
-    Collection<Structure> findStructures(Grid grid);
+    Map<Cell, Structure> findStructures(Grid grid);
 }

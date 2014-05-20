@@ -6,13 +6,10 @@ import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.Point;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGrid;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGridFactory;
-import cz.peinlich.exam.color.grid.implementation.CellPojo;
 import cz.peinlich.exam.color.structures.FindStructuresAlgorithm;
 import cz.peinlich.exam.color.structures.Structure;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * User: George
@@ -21,8 +18,8 @@ import java.util.List;
  */
 public class FloodFillAlgorithm implements FindStructuresAlgorithm {
     @Override
-    public Collection<Structure> findStructures(Grid grid) {
-        List<Structure> list = new LinkedList<>();
+    public Map<Cell, Structure> findStructures(Grid grid) {
+        Map<Cell, Structure> map = new HashMap<>();
         List<Cell> nonEmptyCells = new LinkedList<>(grid.getNonEmptyCells());
 
         while (nonEmptyCells.size()>0){
@@ -32,10 +29,11 @@ public class FloodFillAlgorithm implements FindStructuresAlgorithm {
             ArrayListMatrixGrid fillingGrid = factory.buildEmptyMatrixGrid(grid.getWidth(), grid.getHeight());
             Structure structure = findWholeStructure(start,fillingGrid,grid);
             nonEmptyCells.removeAll(structure.getCells());
-            list.add(structure);
+            for (Cell cell : structure.getCells()) {
+                map.put(cell,structure);
+            }
         }
-
-        return list;
+        return map;
     }
 
     private Structure findWholeStructure(Cell start,ArrayListMatrixGrid fillingGrid, Grid grid) {
