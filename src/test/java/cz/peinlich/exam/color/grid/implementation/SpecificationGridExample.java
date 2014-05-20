@@ -26,7 +26,7 @@ public class SpecificationGridExample {
 
     @Test
     public void check_that_we_can_create_single_cell_grid() throws IOException {
-        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream());
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream(), null);
         assertThat(grid, is(notNullValue()));
 
         Point coordinates = new Point(7, 22);

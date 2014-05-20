@@ -22,7 +22,7 @@ public class FloodFillAlgorithmTest {
 
     @Test
     public void find_single_structure() throws Exception {
-        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream());
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream(), null);
         assertThat(grid, is(notNullValue()));
 
         FloodFillAlgorithm algorithm = new FloodFillAlgorithm();
@@ -42,7 +42,7 @@ public class FloodFillAlgorithmTest {
 
     @Test
     public void find_structures_from_specification() throws Exception {
-        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(specificationGridInput.getInputStream());
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(specificationGridInput.getInputStream(), null);
         assertThat(grid, is(notNullValue()));
 
         FloodFillAlgorithm algorithm = new FloodFillAlgorithm();

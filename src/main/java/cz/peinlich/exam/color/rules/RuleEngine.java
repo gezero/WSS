@@ -13,5 +13,5 @@ import java.util.Map;
 public interface RuleEngine {
     void registerRule(Rule rule);
 
-    Map<Cell, RuleExecutionResult> executeRules(Grid grid);
+    RuleExecutionResult executeRules(Grid grid);
 }

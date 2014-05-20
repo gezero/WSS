@@ -12,10 +12,12 @@ import cz.peinlich.exam.color.grid.Point;
 public class CellPojo implements Cell {
     private final Color color;
     private final Point coordinates;
+    private final String comment;
 
-    public CellPojo(Point coordinates, Color color) {
+    public CellPojo(Point coordinates, Color color, String comment) {
         this.coordinates = coordinates;
         this.color = color;
+        this.comment = comment;
     }
 
     @Override
@@ -26,5 +28,10 @@ public class CellPojo implements Cell {
     @Override
     public Point getCoordinates() {
         return coordinates;
+    }
+
+    @Override
+    public String getComment() {
+        return comment;
     }
 }

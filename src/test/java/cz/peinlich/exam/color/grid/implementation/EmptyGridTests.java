@@ -34,7 +34,7 @@ public class EmptyGridTests {
     @Test
     public void create_grid_from_external_resource() throws IOException {
 
-        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(emptyGridCell.getInputStream());
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(emptyGridCell.getInputStream(), null);
         assertThat(grid, is(notNullValue()));
 
     }

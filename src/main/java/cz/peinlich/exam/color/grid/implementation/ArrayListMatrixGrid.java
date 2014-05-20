@@ -26,8 +26,10 @@ public class ArrayListMatrixGrid implements Grid {
     Map<Cell, Structure> structureMap = new HashMap<>();
     int width;
     int height;
+    private String name;
 
-    public ArrayListMatrixGrid(int width, int height) {
+    public ArrayListMatrixGrid(String name, int width, int height) {
+        this.name = name;
         this.width = 0;
         this.height = 0;
         extendMatrix(width, height);
@@ -145,5 +147,10 @@ public class ArrayListMatrixGrid implements Grid {
     @Override
     public Collection<Structure> getAllStructures() {
         return structureMap.values();
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

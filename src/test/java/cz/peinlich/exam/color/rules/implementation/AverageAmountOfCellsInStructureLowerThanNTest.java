@@ -21,7 +21,7 @@ public class AverageAmountOfCellsInStructureLowerThanNTest {
 
     @Test
     public void test_blue_red_neighbors_from_specification_grid() throws IOException {
-        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream());
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream(), null);
         assertThat(grid, is(notNullValue()));
 
         AverageAmountOfCellsInStructureLowerThanN rule = new AverageAmountOfCellsInStructureLowerThanN(Color.BLUE, 3);

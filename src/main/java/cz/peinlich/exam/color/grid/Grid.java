@@ -24,4 +24,6 @@ public interface Grid {
     Collection<Structure> getNeighborStructures(Structure structure);
 
     Collection<Structure> getAllStructures();
+
+    String getName();
 }

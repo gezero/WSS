@@ -20,7 +20,7 @@ public class HasNoMoreThanNAdjacentStructuresRuleTest {
 
     @Test
     public void test_blue_red_neighbors_from_specification_grid() throws IOException {
-        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream());
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream(), null);
         assertThat(grid, is(notNullValue()));
 
         HasNoMoreThanNAdjacentStructuresRule rule = new HasNoMoreThanNAdjacentStructuresRule(Color.BLUE, 0);

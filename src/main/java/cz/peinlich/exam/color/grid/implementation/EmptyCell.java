@@ -26,4 +26,9 @@ public class EmptyCell implements Cell {
     public Point getCoordinates() {
         return point;
     }
+
+    @Override
+    public String getComment() {
+        return null;
+    }
 }

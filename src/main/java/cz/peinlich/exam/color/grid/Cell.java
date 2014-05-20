@@ -10,4 +10,6 @@ public interface Cell {
     Color getColor();
 
     Point getCoordinates();
+
+    String getComment();
 }
