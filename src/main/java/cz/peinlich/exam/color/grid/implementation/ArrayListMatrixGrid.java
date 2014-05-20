@@ -22,7 +22,7 @@ import static com.google.common.base.Preconditions.checkArgument;
  */
 public class ArrayListMatrixGrid implements Grid {
     private static final Logger logger = LoggerFactory.getLogger(ArrayListMatrixGrid.class);
-    final List<List<Cell>> matrix  = new ArrayList<>();
+    final List<List<Cell>> matrix = new ArrayList<>();
     final List<Cell> cells = new LinkedList<>();
     int width;
     int height;
@@ -82,6 +82,30 @@ public class ArrayListMatrixGrid implements Grid {
     }
 
     public Collection<Cell> getNonEmptyCells() {
-        return cells;
+        return new LinkedList<>(cells);
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public Collection<Cell> getNeighbors(Point coordinates) {
+        List<Cell> neighbors = new ArrayList<>(4);
+        if (coordinates.getX() > 0) {
+            neighbors.add(getCell(coordinates.move(-1, 0)));
+        }
+        if (coordinates.getY() > 0) {
+            neighbors.add(getCell(coordinates.move(0, -1)));
+        }
+        neighbors.add(getCell(coordinates.move(1,0)));
+        neighbors.add(getCell(coordinates.move(0,1)));
+        return neighbors;
     }
 }
