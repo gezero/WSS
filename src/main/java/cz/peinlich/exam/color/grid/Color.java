@@ -6,5 +6,5 @@ package cz.peinlich.exam.color.grid;
  * Time: 9:10
  */
 public enum Color {
-    EMPTY
+    GREEN, EMPTY
 }
