@@ -11,7 +11,7 @@ public enum Color {
     public static Color color(String input){
         switch (input){
             case "G":return GREEN;
-            default: return EMPTY;
+            default: throw new UnsupportedOperationException("Input color is not defined ("+input+")");
         }
     }
 }

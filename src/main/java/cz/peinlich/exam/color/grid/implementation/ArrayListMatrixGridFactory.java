@@ -25,7 +25,7 @@ public class ArrayListMatrixGridFactory {
     /**
      * Patern for parsing the input file, the first two parts are coordinates, third part is color:
      */
-    private static final Pattern pattern= Pattern.compile("(\\d+),(\\d+),([R,G,B,Y])");
+    private static final Pattern pattern= Pattern.compile("(\\d+),(\\d+),([R,G,B,Y]).*");
 
     public ArrayListMatrixGrid buildEmptyMatrixGrid(int width, int height) {
         return new ArrayListMatrixGrid(width, height);
