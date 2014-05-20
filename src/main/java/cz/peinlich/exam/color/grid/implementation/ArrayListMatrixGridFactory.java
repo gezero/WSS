@@ -25,31 +25,31 @@ public class ArrayListMatrixGridFactory {
     /**
      * Patern for parsing the input file, the first two parts are coordinates, third part is color:
      */
-    private static final Pattern pattern= Pattern.compile("(\\d+),(\\d+),([R,G,B,Y]).*");
+    private static final Pattern pattern = Pattern.compile("(\\d+),(\\d+),([R,G,B,Y]).*");
+
+    public static Cell parse(String line) {
+        Matcher m = pattern.matcher(line);
+        logger.debug("Matches: {}", m.matches());
+        logger.debug("x:{}", m.group(1));
+        logger.debug("y:{}", m.group(2));
+        logger.debug("color:{}", m.group(3));
+        return new CellPojo(new Point(Integer.valueOf(m.group(1)), Integer.valueOf(m.group(2))), Color.color(m.group(3)));
+    }
 
     public ArrayListMatrixGrid buildEmptyMatrixGrid(int width, int height) {
         return new ArrayListMatrixGrid(width, height);
     }
 
     public ArrayListMatrixGrid buildGridFromInputStream(InputStream inputStream) throws IOException {
-        ArrayListMatrixGrid grid = new ArrayListMatrixGrid(DEFAULT_WIDTH,DEFAULT_HEIGHT);
+        ArrayListMatrixGrid grid = new ArrayListMatrixGrid(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
-        while ((line=reader.readLine())!=null){
-            logger.info("Reading line: {}",line);
+        while ((line = reader.readLine()) != null) {
+            logger.info("Reading line: {}", line);
             Cell cell = parse(line);
             grid.setCell(cell);
         }
         return grid;
-    }
-
-    public static  Cell parse(String line) {
-        Matcher m = pattern.matcher(line);
-        logger.debug("Matches: {}", m.matches());
-        logger.debug("x:{}",m.group(1));
-        logger.debug("y:{}",m.group(2));
-        logger.debug("color:{}",m.group(3));
-        return new CellPojo(new Point(Integer.valueOf(m.group(1)),Integer.valueOf(m.group(2))), Color.color(m.group(3)));
     }
 }

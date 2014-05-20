@@ -24,9 +24,9 @@ public class SingleCellGridTest {
     @Test
     public void check_that_we_can_create_single_cell_grid() throws IOException {
         ArrayListMatrixGrid grid = factory.buildGridFromInputStream(singleCellGridInput.getInputStream());
-        assertThat(grid,is(notNullValue()));
+        assertThat(grid, is(notNullValue()));
 
         Cell cell = grid.getCell(new Point(7, 22));
-        assertThat(cell.getColor(),is(Color.GREEN));
+        assertThat(cell.getColor(), is(Color.GREEN));
     }
 }

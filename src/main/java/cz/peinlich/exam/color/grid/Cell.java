@@ -8,5 +8,6 @@ package cz.peinlich.exam.color.grid;
  */
 public interface Cell {
     Color getColor();
+
     Point getCoordinates();
 }

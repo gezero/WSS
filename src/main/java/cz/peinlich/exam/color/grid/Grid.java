@@ -8,5 +8,4 @@ package cz.peinlich.exam.color.grid;
  */
 public interface Grid {
     Cell getCell(Point coordinates);
-    java.util.Collection<Structure> getStructures();
 }
