@@ -5,10 +5,7 @@ import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGridFactory;
 import cz.peinlich.exam.color.rules.RuleEngine;
 import cz.peinlich.exam.color.rules.RuleExecutionResult;
-import cz.peinlich.exam.color.rules.implementation.DoesNotHaveAdjacentStructureOfColor;
-import cz.peinlich.exam.color.rules.implementation.HasAdjacentStructureOfColor;
-import cz.peinlich.exam.color.rules.implementation.HasNoMoreThanNAdjacentStructuresRule;
-import cz.peinlich.exam.color.rules.implementation.SimpleRuleEngine;
+import cz.peinlich.exam.color.rules.implementation.*;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -79,16 +76,17 @@ public class JobConfiguration {
             }
 
             private void write(RuleExecutionResult ruleExecutionResult) throws IOException {
-                File outputFileName = new File("output/" +ruleExecutionResult.getName());
-                if (!outputFileName.exists()){
+                File outputFileName = new File("output/" + ruleExecutionResult.getName());
+                if (!outputFileName.exists()) {
                     outputFileName.getParentFile().mkdirs();
                     outputFileName.createNewFile();
                 }
-                FileOutputStream outputStream = new FileOutputStream(outputFileName,false);
+                FileOutputStream outputStream = new FileOutputStream(outputFileName, false);
                 ruleExecutionResult.writeResult(outputStream);
             }
         };
     }
+
     @Bean
     public Job calculateGrids(JobBuilderFactory jobs, Step s1) {
         return jobs.get("calculateGrids")
@@ -102,7 +100,7 @@ public class JobConfiguration {
     public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Grid> reader,
                       ItemWriter<RuleExecutionResult> writer, ItemProcessor<Grid, RuleExecutionResult> processor) {
         return stepBuilderFactory.get("step1")
-                .<Grid, RuleExecutionResult> chunk(10)
+                .<Grid, RuleExecutionResult>chunk(10)
                 .reader(reader)
                 .processor(processor)
                 .writer(writer)
@@ -110,11 +108,19 @@ public class JobConfiguration {
     }
 
     @Bean
-    public RuleEngine ruleEngine(){
+    public RuleEngine ruleEngine() {
         RuleEngine ruleEngine = new SimpleRuleEngine();
-        ruleEngine.registerRule(new HasAdjacentStructureOfColor(Color.GREEN,Color.BLUE));
-        ruleEngine.registerRule(new HasNoMoreThanNAdjacentStructuresRule(Color.RED,1));
-        ruleEngine.registerRule(new DoesNotHaveAdjacentStructureOfColor(Color.YELLOW,Color.GREEN));
+        ruleEngine.registerRule(new HasAdjacentStructureOfColor(Color.GREEN, Color.BLUE));
+        ruleEngine.registerRule(new HasNoMoreThanNAdjacentStructuresRule(Color.RED, 1));
+        ruleEngine.registerRule(new DoesNotHaveAdjacentStructureOfColor(Color.YELLOW, Color.GREEN));
+        ruleEngine.registerRule(new HasSizeAtMostNRule(Color.RED, 5));
+        ruleEngine.registerRule(new IsVerticalAndHorizontal(Color.YELLOW));
+        ruleEngine.registerRule(new NoMoreThanNStructuresOfColor(Color.BLUE, 2));
+        for (Color color : Color.values()) {
+            if (color != Color.EMPTY) {
+                ruleEngine.registerRule(new AverageAmountOfCellsInStructureLowerThanN(color, 5));
+            }
+        }
         return ruleEngine;
     }
 
