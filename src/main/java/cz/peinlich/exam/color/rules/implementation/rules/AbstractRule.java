@@ -1,4 +1,4 @@
-package cz.peinlich.exam.color.rules.implementation;
+package cz.peinlich.exam.color.rules.implementation.rules;
 
 import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.rules.Rule;

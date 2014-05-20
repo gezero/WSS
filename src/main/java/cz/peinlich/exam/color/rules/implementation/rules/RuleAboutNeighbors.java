@@ -1,7 +1,6 @@
-package cz.peinlich.exam.color.rules.implementation;
+package cz.peinlich.exam.color.rules.implementation.rules;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Grid;

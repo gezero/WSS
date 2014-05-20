@@ -4,6 +4,7 @@ import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGrid;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGridFactory;
+import cz.peinlich.exam.color.rules.implementation.rules.HasNoMoreThanNAdjacentStructuresRule;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 

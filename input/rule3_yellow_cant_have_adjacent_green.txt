@@ -1,0 +1,19 @@
+1,1,Y, Yellow structure #1, nothing is adjacent to this structure
+1,3,Y, Yellow structure #2, has adjacent 1 blue structure
+1,4,B, Blue structure #1, adjacent to G2
+1,5,Y, Yellow structure #3 (1/2), has adjacent 2 blue structures
+2,5,Y, Yellow structure #3 (2/2), has adjacent 2 blue structures
+1,6,B, Blue structure #2 (1/2), adjacent to G3
+2,6,B, Blue structure #2 (2/2), adjacent to G3
+3,5,B, Blue structure #3 (1/2), adjacent to G3
+4,5,B, Blue structure #3 (2/2), adjacent to G3
+6,1,Y, Yellow structure #4, nothing is adjacent to this structure
+6,3,Y, Yellow structure #5, has adjacent 1 Green structure
+6,4,G, Green structure #1, adjacent to G2
+6,5,Y, Yellow structure #6 (1/2), has adjacent 2 Green structures
+7,5,Y, Yellow structure #6 (2/2), has adjacent 2 Green structures
+6,6,G, Green structure #2 (1/2), adjacent to G3
+7,6,G, Green structure #2 (2/2), adjacent to G3
+8,5,G, Green structure #3 (1/2), adjacent to G3
+9,5,G, Green structure #3 (2/2), adjacent to G3
+

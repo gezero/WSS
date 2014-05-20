@@ -6,6 +6,7 @@ import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGridFactory;
 import cz.peinlich.exam.color.rules.RuleEngine;
 import cz.peinlich.exam.color.rules.RuleExecutionResult;
 import cz.peinlich.exam.color.rules.implementation.*;
+import cz.peinlich.exam.color.rules.implementation.rules.*;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;

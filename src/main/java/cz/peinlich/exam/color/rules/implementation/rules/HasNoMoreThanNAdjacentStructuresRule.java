@@ -1,4 +1,4 @@
-package cz.peinlich.exam.color.rules.implementation;
+package cz.peinlich.exam.color.rules.implementation.rules;
 
 import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.rules.implementation.predicates.AlwaysTrue;
@@ -15,6 +15,7 @@ public class HasNoMoreThanNAdjacentStructuresRule extends RuleAboutNeighbors {
 
     public HasNoMoreThanNAdjacentStructuresRule(Color sourceColor, int allowedAdjacentStructures) {
         super(new HasColor(sourceColor), new AlwaysTrue(), new HasSizeAtMost(allowedAdjacentStructures));
+        this.n=allowedAdjacentStructures;
     }
 
     @Override

@@ -1,3 +1,6 @@
 input\empty_grid.txt
 input\single_cell_grid.txt
 input\specification_grid.txt
+input\rule1_green_has_adjacent_blue.txt
+input\rule2_red_has_at_most_1_adjacent_structure.txt
+input\rule3_yellow_cant_have_adjacent_green.txt

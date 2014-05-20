@@ -1,9 +1,7 @@
-package cz.peinlich.exam.color.rules.implementation;
+package cz.peinlich.exam.color.rules.implementation.rules;
 
-import com.google.common.base.Predicate;
 import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.rules.implementation.predicates.HasColor;
-import cz.peinlich.exam.color.structures.Structure;
 
 /**
  * User: George
