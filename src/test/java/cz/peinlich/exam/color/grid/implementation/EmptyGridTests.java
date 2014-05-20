@@ -1,4 +1,4 @@
-package cz.peinlich.exam.color.grid.imlementation;
+package cz.peinlich.exam.color.grid.implementation;
 
 import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Color;
@@ -35,7 +35,7 @@ public class EmptyGridTests {
         assertThat(structures.size(),is(0));
     }
 
-    ClassPathResource emptyGridCell = new ClassPathResource("cz/peinlich/exam/color/grid/imlementation/empty_grid.txt");
+    ClassPathResource emptyGridCell = new ClassPathResource("cz/peinlich/exam/color/grid/implementation/empty_grid.txt");
 
     @Test
     public void create_grid_from_external_resource() throws IOException {
