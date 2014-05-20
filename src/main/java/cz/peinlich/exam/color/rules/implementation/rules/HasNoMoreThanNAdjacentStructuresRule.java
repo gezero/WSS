@@ -15,7 +15,7 @@ public class HasNoMoreThanNAdjacentStructuresRule extends RuleAboutNeighbors {
 
     public HasNoMoreThanNAdjacentStructuresRule(Color sourceColor, int allowedAdjacentStructures) {
         super(new HasColor(sourceColor), new AlwaysTrue(), new HasSizeAtMost(allowedAdjacentStructures));
-        this.n=allowedAdjacentStructures;
+        this.n = allowedAdjacentStructures;
     }
 
     @Override

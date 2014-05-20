@@ -3,7 +3,6 @@ package cz.peinlich.exam.color.rules.implementation;
 import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.rules.RuleExecutionResult;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
@@ -13,10 +12,10 @@ import java.nio.charset.Charset;
  * Date: 20.5.2014
  * Time: 17:22
  */
-public class SimpleRuleExecutionResult implements RuleExecutionResult{
+public class SimpleRuleExecutionResult implements RuleExecutionResult {
 
-    private String name;
     StringBuffer buffer = new StringBuffer();
+    private String name;
 
     public SimpleRuleExecutionResult(String name) {
         this.name = name;
@@ -38,10 +37,10 @@ public class SimpleRuleExecutionResult implements RuleExecutionResult{
 
     public void addResult(Cell cell, String message) {
         buffer.append(cell.getCoordinates().getX()).append(",").
-            append(cell.getCoordinates().getY()).append(",").
-            append(cell.getColor()).append(",").
-            append(message!=null?message:"OK");
-        if (cell.getComment()!=null){
+                append(cell.getCoordinates().getY()).append(",").
+                append(cell.getColor()).append(",").
+                append(message != null ? message : "OK");
+        if (cell.getComment() != null) {
             buffer.append(cell.getComment());
         }
         buffer.append("\n");

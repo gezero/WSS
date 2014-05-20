@@ -1,6 +1,5 @@
 package cz.peinlich.exam.color.rules.implementation;
 
-import ch.qos.logback.core.joran.spi.RuleStore;
 import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.rules.Rule;
@@ -18,7 +17,7 @@ import java.util.Map;
  * Time: 17:20
  */
 public class SimpleRuleEngine implements RuleEngine {
-    private List<Rule> rules= new ArrayList<>(10);
+    private List<Rule> rules = new ArrayList<>(10);
 
     @Override
     public void registerRule(Rule rule) {
@@ -27,14 +26,14 @@ public class SimpleRuleEngine implements RuleEngine {
 
     @Override
     public RuleExecutionResult executeRules(Grid grid) {
-        Map<Cell, String> cellStringMap= new HashMap<>();
+        Map<Cell, String> cellStringMap = new HashMap<>();
         for (Rule rule : rules) {
-             cellStringMap.putAll(rule.executeRule(grid));
+            cellStringMap.putAll(rule.executeRule(grid));
         }
 
         SimpleRuleExecutionResult result = new SimpleRuleExecutionResult(grid.getName());
         for (Cell cell : grid.getNonEmptyCells()) {
-            result.addResult(cell,cellStringMap.get(cell));
+            result.addResult(cell, cellStringMap.get(cell));
         }
         return result;
     }

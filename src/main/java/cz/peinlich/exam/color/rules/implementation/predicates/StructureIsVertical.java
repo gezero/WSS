@@ -15,12 +15,12 @@ public class StructureIsVertical implements Predicate<Structure> {
     @Override
     public boolean apply(Structure input) {
         Collection<Cell> cells = input.getCells();
-        Integer position=null;
+        Integer position = null;
         for (Cell cell : cells) {
-            if (position ==null){
+            if (position == null) {
                 position = cell.getCoordinates().getY();
             } else {
-                if (position!= cell.getCoordinates().getY()){
+                if (position != cell.getCoordinates().getY()) {
                     return false;
                 }
             }

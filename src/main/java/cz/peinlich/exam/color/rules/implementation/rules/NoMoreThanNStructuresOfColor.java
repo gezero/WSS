@@ -12,13 +12,13 @@ import cz.peinlich.exam.color.rules.implementation.predicates.HasSizeAtMost;
 public class NoMoreThanNStructuresOfColor extends RuleAboutSetOfStructures {
     private Color color;
 
-    public NoMoreThanNStructuresOfColor(Color color,int amount) {
+    public NoMoreThanNStructuresOfColor(Color color, int amount) {
         super(new HasColor(color), new HasAmountOfStructures(new HasSizeAtMost(amount)));
-        this.color=color;
+        this.color = color;
     }
 
     @Override
     String getMessage() {
-        return "There are to many "+ color.toString().toLowerCase()+" structures";
+        return "There are to many " + color.toString().toLowerCase() + " structures";
     }
 }

@@ -1,7 +1,6 @@
 package cz.peinlich.exam.color.rules.implementation.rules;
 
 import com.google.common.base.Predicate;
-import cz.peinlich.exam.color.rules.implementation.predicates.HasSizeAtMost;
 import cz.peinlich.exam.color.structures.Structure;
 
 /**
@@ -18,7 +17,7 @@ public class HasAmountOfStructures implements Predicate<Iterable<Structure>> {
 
     @Override
     public boolean apply(Iterable<Structure> input) {
-        int size =0;
+        int size = 0;
         for (Structure structure : input) {
             ++size;
         }

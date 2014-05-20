@@ -17,12 +17,12 @@ public class HasAverageAmountOfCellsBelow implements Predicate<Iterable<Structur
 
     @Override
     public boolean apply(Iterable<Structure> input) {
-        int size =0;
-        int cells =0;
+        int size = 0;
+        int cells = 0;
         for (Structure structure : input) {
             ++size;
-            cells+=structure.getCells().size();
+            cells += structure.getCells().size();
         }
-        return (double)cells/(double)size <average;
+        return (double) cells / (double) size < average;
     }
 }

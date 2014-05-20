@@ -51,7 +51,7 @@ public class ArrayListMatrixGridFactory {
         String line;
         while ((line = reader.readLine()) != null) {
             logger.info("Reading line: {}", line);
-            if (line.trim().equals("")){
+            if (line.trim().equals("")) {
                 continue;
             }
             Cell cell = parse(line);

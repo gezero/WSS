@@ -1,9 +1,8 @@
 package cz.peinlich.exam.color.rules.implementation.predicates;
 
+import com.google.common.base.Predicate;
 import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.structures.Structure;
-
-import com.google.common.base.Predicate;
 
 import java.util.Collection;
 
@@ -16,12 +15,12 @@ public class StructureIsHorizontal implements Predicate<Structure> {
     @Override
     public boolean apply(Structure input) {
         Collection<Cell> cells = input.getCells();
-        Integer position=null;
+        Integer position = null;
         for (Cell cell : cells) {
-            if (position ==null){
+            if (position == null) {
                 position = cell.getCoordinates().getX();
             } else {
-                if (position!= cell.getCoordinates().getX()){
+                if (position != cell.getCoordinates().getX()) {
                     return false;
                 }
             }

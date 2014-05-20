@@ -32,5 +32,6 @@ public abstract class RuleAboutStructure extends AbstractRule {
                 result.putAll(buildWrongResult(satisfyingStructure.getCells()));
             }
         }
-        return result;    }
+        return result;
+    }
 }
