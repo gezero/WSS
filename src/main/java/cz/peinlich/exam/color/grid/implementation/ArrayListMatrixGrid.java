@@ -4,13 +4,13 @@ import cz.peinlich.exam.color.grid.Cell;
 import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.Point;
+import cz.peinlich.exam.color.structures.FindStructuresAlgorithm;
+import cz.peinlich.exam.color.structures.Structure;
+import cz.peinlich.exam.color.structures.implementation.FloodFillAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -24,6 +24,7 @@ public class ArrayListMatrixGrid implements Grid {
     private static final Logger logger = LoggerFactory.getLogger(ArrayListMatrixGrid.class);
     final List<List<Cell>> matrix = new ArrayList<>();
     final List<Cell> cells = new LinkedList<>();
+    Map<Cell,Structure> structureMap = new HashMap<>();
     int width;
     int height;
 
@@ -107,5 +108,38 @@ public class ArrayListMatrixGrid implements Grid {
         neighbors.add(getCell(coordinates.move(1,0)));
         neighbors.add(getCell(coordinates.move(0,1)));
         return neighbors;
+    }
+
+    public Structure getStructure(Point coordinates) {
+        return structureMap.get(getCell(coordinates));
+    }
+
+    public void calculateStructures(FindStructuresAlgorithm algorithm) {
+        structureMap = algorithm.findStructures(this);
+    }
+
+    @Override
+    public Collection<Structure> getNeighborStructures(Structure structure) {
+        Set<Cell> cells = new HashSet<>();
+        for (Cell cell : structure.getCells()) {
+            cells.addAll(getNeighbors(cell));
+        }
+        cells.removeAll(structure.getCells());
+        Set<Structure> structures = new HashSet<>();
+        for (Cell cell : cells) {
+            Structure structureToAdd = getStructure(cell);
+            if (structureToAdd!=null) {
+                structures.add(structureToAdd);
+            }
+        }
+        return structures;
+    }
+
+    private Structure getStructure(Cell cell) {
+        return getStructure(cell.getCoordinates());
+    }
+
+    private Collection<Cell> getNeighbors(Cell cell) {
+        return getNeighbors(cell.getCoordinates());
     }
 }

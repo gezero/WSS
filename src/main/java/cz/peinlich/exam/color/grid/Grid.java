@@ -1,6 +1,8 @@
 package cz.peinlich.exam.color.grid;
 
 
+import cz.peinlich.exam.color.structures.Structure;
+
 import java.util.Collection;
 
 /**
@@ -18,4 +20,6 @@ public interface Grid {
     int getHeight();
 
     Collection<Cell> getNeighbors(Point coordinates);
+
+    Collection<Structure> getNeighborStructures(Structure structure);
 }
