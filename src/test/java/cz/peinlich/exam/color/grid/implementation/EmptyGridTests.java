@@ -29,13 +29,16 @@ public class EmptyGridTests {
                 assertThat(cell.getColor(), is(Color.EMPTY));
             }
         }
+        assertThat(grid.getName(),is("empty"));
     }
 
     @Test
     public void create_grid_from_external_resource() throws IOException {
 
-        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(emptyGridCell.getInputStream(), null);
+        ArrayListMatrixGrid grid = factory.buildGridFromInputStream(emptyGridCell.getInputStream(), "name");
         assertThat(grid, is(notNullValue()));
+        assertThat(grid.getName(),is("name"));
+
 
     }
 

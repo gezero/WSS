@@ -49,7 +49,7 @@ public class JobConfiguration {
             @Override
             public Grid mapLine(String line, int i) throws Exception {
                 FileInputStream inputStream = new FileInputStream(line);
-                return factory.buildGridFromInputStream(inputStream, null);
+                return factory.buildGridFromInputStream(inputStream, line);
             }
         });
         return reader;
