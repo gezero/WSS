@@ -20,8 +20,8 @@ import java.util.regex.Pattern;
  */
 public class ArrayListMatrixGridFactory {
     private static final Logger logger = LoggerFactory.getLogger(ArrayListMatrixGridFactory.class);
-    private static final int DEFAULT_WIDTH = 25;
-    private static final int DEFAULT_HEIGHT = 25;
+    private static final int DEFAULT_WIDTH = 5;
+    private static final int DEFAULT_HEIGHT = 5;
     /**
      * Patern for parsing the input file, the first two parts are coordinates, third part is color:
      */
