@@ -1,11 +1,15 @@
 package cz.peinlich.exam.color.job;
 
+import cz.peinlich.exam.color.grid.Color;
 import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGridFactory;
 import cz.peinlich.exam.color.rules.RuleEngine;
 import cz.peinlich.exam.color.rules.RuleExecutionResult;
+import cz.peinlich.exam.color.rules.implementation.HasAdjacentStructureOfColor;
+import cz.peinlich.exam.color.rules.implementation.SimpleRuleEngine;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
@@ -16,6 +20,7 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
@@ -29,13 +34,12 @@ import java.util.List;
  * Date: 20.5.2014
  * Time: 17:05
  */
+@Configuration
+@EnableBatchProcessing
 public class JobConfiguration {
 
     @Autowired
     ArrayListMatrixGridFactory factory;
-
-    @Autowired
-    RuleEngine ruleEngine;
 
     @Bean
     public ItemReader<Grid> itemReader() {
@@ -56,7 +60,7 @@ public class JobConfiguration {
         return new ItemProcessor<Grid, RuleExecutionResult>() {
             @Override
             public RuleExecutionResult process(Grid grid) throws Exception {
-                return ruleEngine.executeRules(grid);
+                return ruleEngine().executeRules(grid);
             }
         };
     }
@@ -101,6 +105,13 @@ public class JobConfiguration {
                 .processor(processor)
                 .writer(writer)
                 .build();
+    }
+
+    @Bean
+    public RuleEngine ruleEngine(){
+        RuleEngine ruleEngine = new SimpleRuleEngine();
+        ruleEngine.registerRule(new HasAdjacentStructureOfColor(Color.GREEN,Color.BLUE));
+        return ruleEngine;
     }
 
 }

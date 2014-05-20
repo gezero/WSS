@@ -6,6 +6,7 @@ import cz.peinlich.exam.color.grid.Point;
 import cz.peinlich.exam.color.structures.implementation.FloodFillAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import java.util.regex.Pattern;
  * Date: 20.5.2014
  * Time: 8:48
  */
+@Component
 public class ArrayListMatrixGridFactory {
     private static final Logger logger = LoggerFactory.getLogger(ArrayListMatrixGridFactory.class);
     private static final int DEFAULT_WIDTH = 5;
