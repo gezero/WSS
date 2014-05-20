@@ -1,7 +1,10 @@
 package cz.peinlich.exam;
 
+import cz.peinlich.exam.entities.other.SimpleData;
+import cz.peinlich.exam.repositories.other.SimpleDataRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,6 +22,16 @@ import org.springframework.context.annotation.Configuration;
 public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        preLoadDefaultData(context);
+    }
+
+    private static void preLoadDefaultData(ConfigurableApplicationContext context) {
+        SimpleDataRepository repository = context.getBean(SimpleDataRepository.class);
+        repository.save(new SimpleData("Test Data 1"));
+        repository.save(new SimpleData("Test Data 2"));
+        repository.save(new SimpleData("Test Data 3"));
+        repository.save(new SimpleData("Test Data 4"));
     }
 }

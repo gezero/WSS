@@ -15,6 +15,14 @@ public class SimpleData {
     Long id;
     String content;
 
+    public SimpleData() {
+        //For serialization
+    }
+
+    public SimpleData(String content) {
+        this.content = content;
+    }
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
