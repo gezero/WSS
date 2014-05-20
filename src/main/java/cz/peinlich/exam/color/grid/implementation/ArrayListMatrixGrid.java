@@ -15,22 +15,22 @@ import java.util.List;
  * Time: 8:48
  */
 public class ArrayListMatrixGrid implements Grid {
-    final Cell[][] matrix;
+    final List<List<Cell>> matrix;
     final private List<Structure> structures = new ArrayList<>();
 
     public ArrayListMatrixGrid(int width, int height) {
-        matrix = new Cell[width][];
+        matrix = new ArrayList<>(width);
         for (int i = 0; i < width; i++) {
-            matrix[i] = new Cell[height];
+            matrix.add(new ArrayList<Cell>(height));
             for (int j = 0; j < height; j++) {
-                matrix[i][j] = new EmptyCell(new Point(i, j));
+                matrix.get(i).add(new EmptyCell(new Point(i, j)));
             }
         }
     }
 
     @Override
     public Cell getCell(Point coordinates) {
-        return matrix[coordinates.getX()][coordinates.getY()];
+        return matrix.get(coordinates.getX()).get(coordinates.getY());
     }
 
     @Override
@@ -39,6 +39,6 @@ public class ArrayListMatrixGrid implements Grid {
     }
 
     public void setCell(Cell cell) {
-
+        matrix.get(cell.getCoordinates().getX()).set(cell.getCoordinates().getY(),cell);
     }
 }

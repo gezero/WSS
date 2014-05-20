@@ -40,7 +40,6 @@ public class ArrayListMatrixGridFactory {
             logger.info("Reading line: {}",line);
             Cell cell = parse(line);
             grid.setCell(cell);
-            throw new RuntimeException("todo:");
         }
         return grid;
     }
