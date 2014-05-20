@@ -5,6 +5,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * This class is the starting point for Spring Boot. The @EnableAutoConfiguration annotation is
+ * the one that tells Spring Boot to try and configure the project automatically
+ * <p/>
+ * User: George
+ * Date: 20.5.2014
+ * Time: 5:33
+ */
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
