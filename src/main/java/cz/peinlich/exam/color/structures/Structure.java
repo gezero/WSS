@@ -1,6 +1,7 @@
 package cz.peinlich.exam.color.structures;
 
 import cz.peinlich.exam.color.grid.Cell;
+import cz.peinlich.exam.color.grid.Color;
 
 import java.util.Collection;
 
@@ -11,4 +12,6 @@ import java.util.Collection;
  */
 public interface Structure {
     Collection<Cell> getCells();
+
+    Color getColor();
 }

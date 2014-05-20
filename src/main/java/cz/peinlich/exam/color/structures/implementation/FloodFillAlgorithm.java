@@ -11,6 +11,8 @@ import cz.peinlich.exam.color.structures.Structure;
 
 import java.util.*;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * User: George
  * Date: 20.5.2014
@@ -37,10 +39,10 @@ public class FloodFillAlgorithm implements FindStructuresAlgorithm {
     }
 
     private Structure findWholeStructure(Cell start,ArrayListMatrixGrid fillingGrid, Grid grid) {
+        checkNotNull(start);
         final List<Cell> structureCells = new LinkedList<>();
-
         flood(start.getCoordinates(),start.getColor(),structureCells,fillingGrid,grid);
-        return new StructurePojo(structureCells);
+        return new StructurePojo(structureCells.iterator().next().getColor(), structureCells);
     }
 
     private void flood(Point point, Color color,List<Cell> structureCells, ArrayListMatrixGrid fillingGrid, Grid grid) {
