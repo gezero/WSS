@@ -1,0 +1,34 @@
+1,1,R, Red structure #1
+1,3,R, Red structure #2
+1,4,B, Blue structure #1
+1,5,R, Red structure #3 (1/2)
+2,5,R, Red structure #3 (2/2)
+1,6,B, Blue structure #2 (1/2)
+2,6,B, Blue structure #2 (2/2)
+3,5,B, Blue structure #3 (1/2)
+4,5,B, Blue structure #3 (2/2)
+1,7,R, Red structure #4 (1/7), can be not linear but has other 2 problems
+2,7,R, Red structure #4 (2/7), can be not linear but has other 2 problems
+3,7,R, Red structure #4 (3/7), can be not linear but has other 2 problems
+4,7,R, Red structure #4 (4/7), can be not linear but has other 2 problems
+4,8,R, Red structure #4 (5/7), can be not linear but has other 2 problems
+5,7,R, Red structure #4 (6/7), can be not linear but has other 2 problems
+5,8,R, Red structure #4 (7/7), can be not linear but has other 2 problems
+1,9,Y, Yellow structure #1 (1/6), not linear
+2,9,Y, Yellow structure #1 (2/6), not linear
+3,9,Y, Yellow structure #1 (3/6), not linear
+3,10,Y, Yellow structure #1 (4/6), not linear
+4,9,Y, Yellow structure #1 (5/6), not linear
+5,9,Y, Yellow structure #1 (6/6), not linear
+1,12,Y, Yellow structure #2 (1/6), linear ok
+2,12,Y, Yellow structure #2 (2/6), linear ok
+3,12,Y, Yellow structure #2 (3/6), linear ok
+4,12,Y, Yellow structure #2 (4/6), linear ok
+5,14,Y, Yellow structure #2 (5/6), linear ok
+6,15,Y, Yellow structure #2 (6/6), linear ok
+12,1,Y, Yellow structure #2 (1/6), linear ok
+12,2,Y, Yellow structure #2 (2/6), linear ok
+12,3,Y, Yellow structure #2 (3/6), linear ok
+12,4,Y, Yellow structure #2 (4/6), linear ok
+14,5,Y, Yellow structure #2 (5/6), linear ok
+15,6,Y, Yellow structure #2 (6/6), linear ok

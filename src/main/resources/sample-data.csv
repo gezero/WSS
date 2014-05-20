@@ -4,3 +4,5 @@ input\specification_grid.txt
 input\rule1_green_has_adjacent_blue.txt
 input\rule2_red_has_at_most_1_adjacent_structure.txt
 input\rule3_yellow_cant_have_adjacent_green.txt
+input\rule4_red_structure_cannot_consist_of_more_than_5_cells.txt
+input\rule5_yellow_linear.txt
