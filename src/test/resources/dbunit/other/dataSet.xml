@@ -1,8 +1,0 @@
-<!--?xml version='1.0' encoding='UTF-8'?-->
-<!-- This data set exist only for the purpose of filling the SimpleData class. It is here to test the infrastructure.
- I do not know what entities/data will be needed during the exam.
--->
-<dataset>
-    <simple_data id="1" content="hello_value">
-    </simple_data>
-</dataset>

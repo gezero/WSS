@@ -1,10 +1,8 @@
 package cz.peinlich.exam;
 
-import cz.peinlich.exam.entities.other.SimpleData;
-import cz.peinlich.exam.repositories.other.SimpleDataRepository;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,19 +17,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
+@EnableBatchProcessing
 public class Application {
 
     public static void main(String[] args) {
-
-        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        preLoadDefaultData(context);
-    }
-
-    private static void preLoadDefaultData(ConfigurableApplicationContext context) {
-        SimpleDataRepository repository = context.getBean(SimpleDataRepository.class);
-        repository.save(new SimpleData("Test Data 1"));
-        repository.save(new SimpleData("Test Data 2"));
-        repository.save(new SimpleData("Test Data 3"));
-        repository.save(new SimpleData("Test Data 4"));
+        SpringApplication.run(Application.class, args);
     }
 }
