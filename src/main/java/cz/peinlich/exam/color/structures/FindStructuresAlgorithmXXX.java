@@ -10,6 +10,6 @@ import java.util.Map;
  * Date: 20.5.2014
  * Time: 10:38
  */
-public interface FindStructuresAlgorithm {
+public interface FindStructuresAlgorithmXXX {
     Map<Cell, Structure> findStructures(Grid grid);
 }

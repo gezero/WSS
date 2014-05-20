@@ -6,7 +6,7 @@ import cz.peinlich.exam.color.grid.Grid;
 import cz.peinlich.exam.color.grid.Point;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGrid;
 import cz.peinlich.exam.color.grid.implementation.ArrayListMatrixGridFactory;
-import cz.peinlich.exam.color.structures.FindStructuresAlgorithm;
+import cz.peinlich.exam.color.structures.FindStructuresAlgorithmXXX;
 import cz.peinlich.exam.color.structures.Structure;
 
 import java.util.*;
@@ -18,7 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Date: 20.5.2014
  * Time: 10:39
  */
-public class FloodFillAlgorithm implements FindStructuresAlgorithm {
+public class FloodFillAlgorithm implements FindStructuresAlgorithmXXX {
 
 
 
